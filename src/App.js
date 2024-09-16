@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useRoutes } from 'react-router-dom';
+import Layout from './compontens/Layout'; // Import Layout component
+import BankAccount from './compontens/BankAccount';
+import Charts from './compontens/Charts';
+import Customers from './compontens/Customers';
+import Dashboards from './compontens/Dashboards';
+import Items from './compontens/Items';
+import Vendor from './compontens/Vendor';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboards />} />
+          <Route path="/dashboard" element={<Dashboards />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/vendor" element={<Vendor />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/bankaccount" element={<BankAccount />} />
+          <Route path="/charts" element={<Charts />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
-}
+};
 
 export default App;
